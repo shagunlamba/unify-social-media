@@ -1,0 +1,53 @@
+<%- include('partials/header') %>
+        <h1>Unify</h1>
+        <section id="feed-posts">
+            <h4>Posts</h4>
+            <form action="/feed" id="new-post-form" method="POST">
+                <textarea name="content" cols="30" row="3" placeholder="Type here.."></textarea>
+                <input type="submit" value="Post">
+            </form>
+        </section>
+        <!-- // #073CA6 -->
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col">
+                    <p>
+                    <% for(post of posts){ %>
+                        <li> <%=  post.content %> </li>
+                        <small> <%= post.user.fullName %></small>
+                        <small> <%= post.createdAt %></small>
+                    </p>
+                    <div class="post-comments">
+                        <form action="/comments" method="post">
+                            <input type="text" name="commentContent" placeholder="Type here to add comment... ">
+                            <input type="hidden" name="post" value="<%= post._id %>">
+                            <input type="submit" value="Add Comment">
+                        </form>
+
+                        <div class="post-comment-list">
+                            <ul id="post-comments-<%=post._id %>" >
+                                <% for (comment of post.comments) { %>
+                                    <p>
+                                        <%= comment.content %>
+                                        <br>
+                                        <small> <%= comment.user.fullName %> </small>
+                                    </p>
+                                <% } %> 
+                            </ul>
+                        </div>
+
+                    </div>
+                    <% } %>
+                </div>
+            </div>
+
+        </div>
+
+        <a class="btn btn-light" role="button" href="/logout">Logout</a>
+
+
+<%- include('partials/footer') %>
+<!-- brew services start mongodb-community@4.4 -->
+<!-- email: 'skncdc@gm.com', -->
+<!-- password: '123', -->

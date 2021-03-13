@@ -1,19 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-</head>
-<body>
-    <form method="post" action="/login" autocomplete="off">
-        <label for="email"><b>Email</b></label>
-        <input type="email" placeholder="Enter Email" name="email" required autocomplete="off" autofocus>
-        
-        <label for="password"><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="password" required autocomplete="off">
-        
-        <button type="submit">Login</button>
-    </form>
-</body>
-</html>
+<%- include('partials/header') %>
+
+
+<!-- Creating a login Form -->
+<div class="row mt-5">
+    <div class="col-md-6 m-auto">
+      <div class="card card-body">
+        <h1 class="text-center mb-3"><i class="fas fa-sign-in-alt"></i>  Login</h1>
+        <%- include('partials/messages') %>
+        <form action="/login" method="POST">
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="form-control"
+              placeholder="Enter Email"
+            />
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              class="form-control"
+              placeholder="Enter Password"
+            />
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Login</button>
+        </form>
+        <p class="lead mt-4">
+          No Account? <a href="/signup">Register</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+
+<%- include('partials/footer') %>
